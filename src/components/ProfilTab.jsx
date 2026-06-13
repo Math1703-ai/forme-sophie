@@ -1,13 +1,11 @@
 import { useRef, useState } from 'react'
 import { defaultProfile, besoinEau } from '../profile.js'
 import { downloadBackup, importFromFile, resetAll } from '../storage.js'
-import { useLocalStorage } from '../hooks/useLocalStorage.js'
 
 export default function ProfilTab() {
   const p = defaultProfile
   const fileRef = useRef(null)
   const [toast, setToast] = useState('')
-  const [apiKey, setApiKey] = useLocalStorage('forme:apikey', '')
 
   const flash = (m) => { setToast(m); setTimeout(() => setToast(''), 3500) }
 
@@ -79,28 +77,6 @@ export default function ProfilTab() {
         </div>
         <input ref={fileRef} type="file" accept="application/json" onChange={onImport} hidden />
         {toast && <div className="toast">{toast}</div>}
-      </div>
-
-      {/* Clé API pour l'analyse photo */}
-      <div className="card info-box">
-        <h3>📸 Analyse photo (IA)</h3>
-        <p className="muted" style={{ marginTop: -4 }}>
-          La page <strong>Photo</strong> utilise l’intelligence artificielle Claude pour reconnaître les aliments
-          et estimer les calories. Il faut une clé personnelle (créée sur <strong>console.anthropic.com</strong>) :
-          c’est gratuit à créer et ça coûte quelques centimes par photo. Colle-la ici :
-        </p>
-        <div className="api-field">
-          <input
-            type="password"
-            value={apiKey}
-            onChange={(e) => setApiKey(e.target.value.trim())}
-            placeholder="sk-ant-..."
-            autoComplete="off"
-          />
-        </div>
-        <p className="muted" style={{ fontSize: 12, marginTop: 8 }}>
-          {apiKey ? '✅ Clé enregistrée sur ce téléphone — la page Photo est active.' : 'La clé reste sur ce téléphone, elle n’est envoyée qu’à Claude pour analyser tes photos.'}
-        </p>
       </div>
 
       {/* Installation */}

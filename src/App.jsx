@@ -5,7 +5,6 @@ import { currentWeekNum, daysToChallengeEnd, weekProgress } from './utils.js'
 import { weeks } from './data/program.js'
 import SemaineTab from './components/SemaineTab.jsx'
 import MenusTab from './components/MenusTab.jsx'
-import AssietteTab from './components/AssietteTab.jsx'
 import BougerTab from './components/BougerTab.jsx'
 import ProgresTab from './components/ProgresTab.jsx'
 import ProfilTab from './components/ProfilTab.jsx'
@@ -13,7 +12,6 @@ import ProfilTab from './components/ProfilTab.jsx'
 const TABS = [
   { id: 'semaine', label: 'Semaine', icon: '🗓️' },
   { id: 'menus', label: 'Menus', icon: '🥗' },
-  { id: 'assiette', label: 'Photo', icon: '📸' },
   { id: 'bouger', label: 'Bouger', icon: '🤸‍♀️' },
   { id: 'progres', label: 'Progrès', icon: '📈' },
   { id: 'profil', label: 'Profil', icon: '🌿' },
@@ -46,7 +44,6 @@ export default function App() {
       <main>
         {tab === 'semaine' && <SemaineTab selected={selected} setSelected={setSelected} done={done} setDone={setDone} />}
         {tab === 'menus' && <MenusTab />}
-        {tab === 'assiette' && <AssietteTab />}
         {tab === 'bouger' && <BougerTab />}
         {tab === 'progres' && <ProgresTab done={done} />}
         {tab === 'profil' && <ProfilTab />}

@@ -12,8 +12,7 @@ export function exportData() {
   const data = {}
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i)
-    // on exporte tout SAUF la clé API (secret à ne pas mettre dans un fichier partagé)
-    if (k && isOurKey(k) && k !== 'forme:apikey') data[k] = localStorage.getItem(k)
+    if (k && isOurKey(k)) data[k] = localStorage.getItem(k)
   }
   return {
     app: 'forme-sophie',
